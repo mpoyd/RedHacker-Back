@@ -25,14 +25,21 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.User)
-  @Get('/user')
-  getProfile(@Request() req) {
+  @Roles(Role.free_user)
+  @Get('/free_user')
+  getProfileFree(@Request() req) {
     return req.user;
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.Admin)
+  @Roles(Role.premium_user)
+  @Get('/premium_user')
+  getProfilePremium(@Request() req) {
+    return req.user;
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.admin)
   @Get('/admin')
   getDashboard(@Request() req) {
     return req.user;
