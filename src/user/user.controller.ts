@@ -46,6 +46,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Put('/:id')
   async updateUser(@Request() req, @Param('id') id: string, @Body() updateUserDTO: UpdateUserDTO) {
+    if(!((req.user.roles.includes("admin"))||(req.user.userId === id))) throw new ForbiddenException("You can only modify your own profile");
     const user = await this.userService.updateUser(id, updateUserDTO);
     if (!user) throw new NotFoundException('User does not exist!');
     return user;
