@@ -1,7 +1,7 @@
+import { DefaultValuePipe } from '@nestjs/common';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Role } from 'src/auth/enums/role.enum';
-// import { Role } from 'src/auth/enums/role.enum';
 
 export type UserDocument = User & Document;
 
@@ -16,8 +16,7 @@ export class User {
   @Prop()
   password: string;
 
-
-  @Prop()
+  @Prop({default:["free_user"]})
   roles: Role[];
 
 }

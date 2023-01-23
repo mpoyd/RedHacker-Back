@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
 import { defaultIfEmpty } from "rxjs";
 
 export class CreateUserDTO {
@@ -9,6 +9,6 @@ export class CreateUserDTO {
     @IsString()
     @MinLength(4)
     password: string;
-    @IsNotEmpty()//to do : check if valid role
+    @IsOptional()
     roles: string[];
   }
