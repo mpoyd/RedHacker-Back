@@ -2,8 +2,9 @@ import { Controller, Post, Get, Put, Delete, Body, Param, Query, NotFoundExcepti
 import { LabService } from './lab.service';
 import { CreateLabDTO } from './dtos/create-lab.dto';
 import { FilterLabDTO } from './dtos/filter-lab.dto';
+import { UpdateLabDTO } from './dtos/update-lab.dto';
 
-@Controller('store/labs')
+@Controller('lab')
 export class LabController {
   constructor(private labService: LabService) { }
 
@@ -32,8 +33,8 @@ export class LabController {
   }
 
   @Put('/:id')
-  async updateLab(@Param('id') id: string, @Body() createLabDTO: CreateLabDTO) {
-    const lab = await this.labService.updateLab(id, createLabDTO);
+  async updateLab(@Param('id') id: string, @Body() updateLabDTO: UpdateLabDTO) {
+    const lab = await this.labService.updateLab(id, updateLabDTO);
     if (!lab) throw new NotFoundException('Lab does not exist!');
     return lab;
   }

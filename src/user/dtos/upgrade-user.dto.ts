@@ -2,7 +2,5 @@ import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from "class-vali
 
 export class UpgradeUserDTO {
     @IsString()
-    id: string;
-    @IsString()
     verificationCode: string;
   }

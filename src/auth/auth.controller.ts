@@ -23,25 +23,4 @@ export class AuthController {
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
-
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.free_user)
-  @Get('/free_user')
-  getProfileFree(@Request() req) {
-    return req.user;
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.premium_user)
-  @Get('/premium_user')
-  getProfilePremium(@Request() req) {
-    return req.user;
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.admin)
-  @Get('/admin')
-  getDashboard(@Request() req) {
-    return req.user;
-  }
 }

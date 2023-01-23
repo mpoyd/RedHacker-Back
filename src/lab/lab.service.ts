@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Lab, LabDocument } from './schemas/lab.schema';
 import { CreateLabDTO } from './dtos/create-lab.dto';
 import { FilterLabDTO } from './dtos/filter-lab.dto';
+import { UpdateLabDTO } from './dtos/update-lab.dto';
 
 @Injectable()
 export class LabService {
@@ -42,9 +43,9 @@ export class LabService {
     return newLab.save();
   }
 
-  async updateLab(id: string, createLabDTO: CreateLabDTO): Promise<Lab> {
+  async updateLab(id: string, updateLabDTO: UpdateLabDTO): Promise<Lab> {
     const updatedLab = await this.labModel
-      .findByIdAndUpdate(id, createLabDTO, { new: true });
+      .findByIdAndUpdate(id, updateLabDTO, { new: true });
     return updatedLab;
   }
 

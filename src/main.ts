@@ -9,7 +9,7 @@ async function bootstrap() {
     "preflightContinue": false,
     "optionsSuccessStatus": 204
   }});
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true,forbidUnknownValues: false }));
   await app.listen(3000);
 }
 bootstrap();
