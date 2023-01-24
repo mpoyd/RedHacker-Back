@@ -35,9 +35,9 @@ export class UserController {
 
   @Get('/:id')
   async getUser(@Param('id') id: string) {
-    const User = await this.userService.getUser(id);
-    if (!User) throw new NotFoundException('User does not exist!');
-    return User;
+    const user = await this.userService.getUser(id);
+    if (!user) throw new NotFoundException('User does not exist!');
+    return user;
   }
 
   @UseGuards(JwtAuthGuard)
@@ -53,9 +53,9 @@ export class UserController {
   @Roles(Role.admin)
   @Delete('/:id')
   async deleteUser(@Param('id') id: string) {
-    const User = await this.userService.deleteUser(id);
-    if (!User) throw new NotFoundException('User does not exist');
-    return User;
+    const user = await this.userService.deleteUser(id);
+    if (!user) throw new NotFoundException('User does not exist');
+    return user;
   }
   
   
