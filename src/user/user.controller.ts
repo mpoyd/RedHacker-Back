@@ -11,7 +11,6 @@ import { UpdateUserDTO } from './dtos/update-user.dto';
 export class UserController {
   constructor(private userService: UserService) {}
   
-
   @UseGuards(JwtAuthGuard)
   @Get('/profile')
   async getProfile(@Request() req) {
@@ -34,8 +33,6 @@ export class UserController {
     return allUsers;
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.admin)
   @Get('/:id')
   async getUser(@Param('id') id: string) {
     const User = await this.userService.getUser(id);
